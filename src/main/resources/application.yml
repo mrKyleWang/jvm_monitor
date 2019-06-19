@@ -1,0 +1,11 @@
+server:
+  port: 8890
+
+#============== influx ===================
+influxDB:
+  serverAddr: http://127.0.0.1:8086
+  username: root
+  password: root
+  dataBase: jvm_metrics_test
+  retentionPolicyName: 2_days
+  retentionPolicy: 2d
