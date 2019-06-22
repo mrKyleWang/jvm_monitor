@@ -7,5 +7,5 @@ influxDB:
   username: root
   password: root
   dataBase: jvm_metrics_test
-  retentionPolicyName: 2_days
-  retentionPolicy: 2d
+  retentionPolicyName: 3_days
+  retentionPolicy: 3d
