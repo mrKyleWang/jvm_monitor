@@ -41,9 +41,14 @@ public class InfluxDbSender {
 	}
 
 	public void send(String measurement, Map<String, Long> metrics) {
-		// 打上ip+端口的tag ，用于分类查询
-		Point.Builder builder = Point.measurement(measurement).time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
-				.tag("host", host).tag("port", port + "").tag("addr", host + ":" + port);
+		// 构建上报数据对象:Point
+		// 打上ip+端口的tag ，用于实例标识、分类查询
+		Point.Builder builder = Point.measurement(measurement)
+				.time(System.currentTimeMillis(), TimeUnit.MILLISECONDS)
+				.tag("host", host)
+				.tag("port", port + "")
+				.tag("addr", host + ":" + port);
+		// 添加指标数据
 		for (Map.Entry<String, Long> entry : metrics.entrySet()) {
 			builder.addField(entry.getKey(), entry.getValue());
 		}
